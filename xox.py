@@ -1,10 +1,13 @@
 import random
+import time
+
 
 class tahtaolustur:
     def __init__(self):
         self.tahtadurumu=[["0","0","0"],["0","0","0"],["0","0","0"]]
         self.sira=random.randint(0,1)    
         self.kazanan="yok"
+
     def tahtagoster(self):
         if self.sira==0:
             print("Sizin hamleniz:\n")
@@ -58,11 +61,11 @@ class tahtaolustur:
             
                 if (satir<1 or satir>3 or sutun<1 or sutun>3):
                     print("\ngecersiz aralık..")
-                    self.hamleyap(self.sira)
+                    self.hamleyap()
 
                 if self.tahtadurumu[satir-1][sutun-1] != "0":
                     print("\ngecersiz hamle...")
-                    self.hamleyap(self.sira)
+                    self.hamleyap()
             
                 self.tahtadurumu[satir-1][sutun-1]="X"
                 self.tahtagoster()
@@ -70,8 +73,9 @@ class tahtaolustur:
                 self.winner()
             except:
                 print("\nbilinmeyen bir hata olustu tekrar deneyiniz...\n")
-                hamleyap()
+                self.hamleyap()
         elif self.sira==1:
+            time.sleep(0.5)
             satir=random.randint(0,2)
             sutun=random.randint(0,2)
             if self.tahtadurumu[satir][sutun]!="0":
@@ -88,13 +92,4 @@ deneme=tahtaolustur()
 
 while deneme.winner()=="yok":
     deneme.hamleyap()
-     
-        
-
-
-
-
-
-
-
-    
+   
